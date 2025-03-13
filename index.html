@@ -34,11 +34,27 @@
       padding: 20px;
       text-align: center;
       color: white;
+      position: relative;
     }
 
     header h1 {
       font-size: 3rem;
       font-weight: 600;
+    }
+
+    /* Sign In Section */
+    .sign-in {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #d6c6f7;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    .sign-in:hover {
+      background-color: #c0a0f2;
     }
 
     /* Hero Section */
@@ -149,21 +165,22 @@
   <!-- Header -->
   <header>
     <h1>Auxilium</h1>
+    <div class="sign-in">Sign In</div>
   </header>
 
   <!-- Hero Section with Search Bar -->
   <div class="hero">
     <h2>Find the service you need with ease</h2>
     <div class="search-bar">
-      <input type="text" placeholder="Search for a service...">
-      <button>Search</button>
+      <input type="text" id="search-input" placeholder="Search for a service...">
+      <button id="search-button">Search</button>
     </div>
   </div>
 
   <!-- Services Carousel -->
   <div class="services">
     <h3>Our Services</h3>
-    <div class="carousel">
+    <div class="carousel" id="service-carousel">
       <div class="service-item">
         <img src="https://via.placeholder.com/200x150?text=Chiropractor" alt="Chiropractor">
         <p>Chiropractor</p>
@@ -191,6 +208,54 @@
   <footer>
     <p>&copy; 2025 Auxilium. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Service data
+    const services = [
+      { name: 'Chiropractor', image: 'https://via.placeholder.com/200x150?text=Chiropractor' },
+      { name: 'Oil Change', image: 'https://via.placeholder.com/200x150?text=Oil+Change' },
+      { name: 'DJ', image: 'https://via.placeholder.com/200x150?text=Dj' },
+      { name: 'Photography', image: 'https://via.placeholder.com/200x150?text=Photography' },
+      { name: 'Pharmacy', image: 'https://via.placeholder.com/200x150?text=Pharmacy' }
+    ];
+
+    // Function to update the service carousel based on the search query
+    function searchServices(query) {
+      const filteredServices = services.filter(service => service.name.toLowerCase().includes(query.toLowerCase()));
+      const carousel = document.getElementById('service-carousel');
+      carousel.innerHTML = ''; // Clear current carousel content
+
+      filteredServices.forEach(service => {
+        const serviceItem = document.createElement('div');
+        serviceItem.classList.add('service-item');
+
+        const img = document.createElement('img');
+        img.src = service.image;
+        img.alt = service.name;
+
+        const p = document.createElement('p');
+        p.textContent = service.name;
+
+        serviceItem.appendChild(img);
+        serviceItem.appendChild(p);
+        carousel.appendChild(serviceItem);
+      });
+    }
+
+    // Add event listener to search button
+    document.getElementById('search-button').addEventListener('click', () => {
+      const query = document.getElementById('search-input').value;
+      searchServices(query);
+    });
+
+    // Optional: Add keypress event for 'Enter' key in search bar
+    document.getElementById('search-input').addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') {
+        const query = event.target.value;
+        searchServices(query);
+      }
+    });
+  </script>
 
 </body>
 </html>
