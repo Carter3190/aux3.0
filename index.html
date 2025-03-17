@@ -57,27 +57,51 @@
       background-color: #c0a0f2;
     }
 
-  <!-- Hero Section with Background Slideshow -->
-<div class="hero">
-  <div class="slideshow">
-    <div class="slide">
-      <img src="Jerry.jpg" alt="Jerry">
-    </div>
-    <div class="slide">
-      <img src="DrEvil.jpg" alt="Dr. Evil">
-    </div>
-    <div class="slide">
-      <img src="Kronkz.jpg" alt="Kronk">
-    </div>
-  </div>
-  <div class="overlay">
-    <h2>Find the service you need with ease</h2>
-    <div class="search-bar">
-      <input type="text" id="search-input" placeholder="Search for a service...">
-      <button id="search-button">Search</button>
-    </div>
-  </div>
-</div>
+    /* Hero Section */
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      background-color: #f0f0f0;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .search-bar input {
+      padding: 15px;
+      width: 60%;
+      font-size: 1.2rem;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      outline: none;
+      margin-right: 10px;
+    }
+
+    .search-bar button {
+      padding: 15px 30px;
+      background-color: #d6c6f7;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    .search-bar button:hover {
+      background-color: #c0a0f2;
+    }
 
     /* Services Carousel */
     .services {
